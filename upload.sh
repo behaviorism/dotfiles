@@ -13,7 +13,7 @@ for p in $paths; do
 	make_dir p && find ~/$p -exec cp -r {} ~/dotfiles \;
 done
 
-copy_folder .config/alacritty
+copy_folder .config/alacritty/
 copy_folder .vim/*.*
 copy_folder typescript
 
