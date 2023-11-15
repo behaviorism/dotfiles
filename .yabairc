@@ -1,0 +1,24 @@
+sudo yabai --load-sa
+yabai -m signal -add event=dock_did_restart action="sudo yabai --load-sa"
+
+alias yc='yabai -m config'
+alias yr='yabai -m rule --add'
+
+# mouse
+yc mouse_drop_action            swap
+
+yc layout                       bsp
+yc window_placement             second_child
+
+yc window_opacity               off
+yc window_opacity_duration      0.0
+yc active_window_opacity        1.0
+yc normal_window_opacity        0.90
+
+yc window_border                on
+yc window_border_width          1
+yc active_window_border_color   0xff4c7899
+yc normal_window_border_color   0xff333333
+
+# general space settings
+yc external_bar                 all:18:0
