@@ -5,7 +5,7 @@ make_dir() {
 }
 
 copy_folder() {
-	mkdir -p `dirname ~/dotfiles/$1`
+	mkdir -p `dirname ~/dotfiles/"$1"`
 	cp -r ~/$1 `dirname ~/dotfiles/"$1"`
 }
 
