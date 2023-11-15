@@ -12,7 +12,7 @@ copy_folder() {
 paths=('.skhdrc' '.tmux.conf' '.yabairc' '.zshrc')
 
 for p in $paths; do
-	copy_folder p
+	copy_folder $p
 done
 
 copy_folder .config/alacritty/
