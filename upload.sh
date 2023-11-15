@@ -1,3 +1,5 @@
+cd ~/dotfiles
+
 make_dir() {
 	mkdir -p `dirname ~/dotfiles/$1`
 }
