@@ -12,7 +12,7 @@ copy_folder() {
 paths=('.skhdrc' '.tmux.conf' '.yabairc' '.zshrc')
 
 for p in $paths; do
-	make_dir p && find ~/$p -exec cp -r {} ~/dotfiles \;
+	copy_folder p
 done
 
 copy_folder .config/alacritty/
