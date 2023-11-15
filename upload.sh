@@ -12,7 +12,7 @@ for p in $paths; do
 done
 
 copy_folder .config/alacritty/
-copy_folder ~/.vim/*.*
+copy_folder '.vim/*.*'
 copy_folder typescript/
 
 git add .
