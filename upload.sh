@@ -1,9 +1,5 @@
 cd ~/dotfiles
 
-make_dir() {
-	mkdir -p `dirname ~/dotfiles/$1`
-}
-
 copy_folder() {
 	mkdir -p `dirname ~/dotfiles/"$1"`
 	cp -r ~/"$1" `dirname ~/dotfiles/"$1"`
