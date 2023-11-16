@@ -5,7 +5,7 @@ copy_folder() {
 	cp -r ~/${~1} `dirname ~/test/"$1"`
 }
 
-paths=('.skhdrc' '.tmux.conf' '.yabairc' '.zshrc' '.config/alacritty' '.vim/{,*}.*(N)' 'typescript')
+paths=('.skhdrc' '.tmux.conf' '.yabairc' '.zshrc' '.config/alacritty' '.vim/{,*}.*' 'typescript')
 
 for p in $paths; do
 	copy_folder $p
