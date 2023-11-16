@@ -13,9 +13,3 @@ alias git-rm-ds-store='find . -name .DS_Store -print0 | xargs -0 git rm -f --ign
 # dotfiles sync
 alias download-dotfiles='zsh ~/dotfiles/download.sh'
 alias upload-dotfiles='zsh ~/dotfiles/upload.sh'
-
-plugins=(
-  git
-  zsh-autosuggestions
-  zsh-completions
-)
