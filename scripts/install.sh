@@ -8,6 +8,8 @@ brew install yabai
 # Overwrite current yabai version with 5.0.9 (supports borders)
 sudo cp ~/dotfiles/scripts/yabai /usr/local/bin/yabai
 brew install skhd
+# Required for yabai
+brew install jq
 
 # Install vim plug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
