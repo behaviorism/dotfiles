@@ -19,6 +19,7 @@ yc window_border                on
 yc window_border_width          1
 yc active_window_border_color   0xff4c7899
 yc normal_window_border_color   0xff333333
+yc window_border_radius         0
 
 # general space settings
 yc external_bar                 all:18:0
