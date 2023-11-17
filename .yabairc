@@ -11,15 +11,16 @@ yc layout                       bsp
 yc window_placement             second_child
 
 yc window_opacity               off
-yc window_opacity_duration      0.0
 yc active_window_opacity        1.0
-yc normal_window_opacity        0.90
+yc normal_window_opacity        1.0
 
 yc window_border                on
 yc window_border_width          1
 yc active_window_border_color   0xff4c7899
 yc normal_window_border_color   0xff333333
 yc window_border_radius         0
+
+yc window_shadow                off
 
 # general space settings
 yc external_bar                 all:18:0
