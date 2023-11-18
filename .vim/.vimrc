@@ -6,6 +6,8 @@ source ~/.vim/mappings.vim
 
 syntax on
 set encoding=utf-8
+set termguicolors
+let mapleader=","
 
 set guioptions-=m
 set guioptions-=T
@@ -29,8 +31,8 @@ set listchars=tab:·\ ,
 
 colorscheme GruberDarker
 
-hi LineNr ctermfg=darkgrey guifg=darkgrey
+hi LineNr ctermfg=darkgrey guifg=#52494e
 
 set cursorline
-hi CursorLine ctermbg=NONE ctermfg=NONE
-hi CursorLineNr cterm=NONE
+hi CursorLine ctermbg=NONE guibg=NONE
+hi CursorLineNr cterm=NONE gui=NONE

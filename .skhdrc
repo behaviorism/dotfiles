@@ -1,83 +1,58 @@
+# Assumes ctrl and cmd have been replaced
+
 # Open terminal
-cmd - return : open -na /Applications/Alacritty.app
+ctrl - return : open -na /Applications/Alacritty.app
 
-# Change windows focus within space
-alt - left : yabai -m window --focus west
-alt - down : yabai -m window --focus south
-alt - up : yabai -m window --focus north
-alt - right : yabai -m window --focus east
+# Change window focus
+# If stacked layout, allow h and l to navigate
+ctrl - h : $(yabai -m query --spaces --space | jq '.type == "bsp"') && yabai -m window --focus west || yabai -m window --focus stack.prev
+ctrl - j : yabai -m window --focus south
+ctrl - k : yabai -m window --focus north
+ctrl - l : $(yabai -m query --spaces --space | jq '.type == "bsp"') && yabai -m window --focus east || yabai -m window --focus stack.next
 
-alt - h : yabai -m window --focus west
-alt - j : yabai -m window --focus south
-alt - k : yabai -m window --focus north
-alt - l : yabai -m window --focus east
+# Move focused window
+ctrl + shift - h : yabai -m window --warp west
+ctrl + shift - j : yabai -m window --warp south
+ctrl + shift - k : yabai -m window --warp north
+ctrl + shift - l : yabai -m window --warp east
 
-# Move windows within space
-shift + alt - left : yabai -m window --warp west
-shift + alt - down : yabai -m window --warp south
-shift + alt - up : yabai -m window --warp north
-shift + alt - right : yabai -m window --warp east
+# Toggle fullscreen
+ctrl - f : yabai -m window --toggle zoom-fullscreen
 
-shift + alt - h : yabai -m window --warp west
-shift + alt - j : yabai -m window --warp south
-shift + alt - k : yabai -m window --warp north
-shift + alt - l : yabai -m window --warp east
-
-# Resize windows
-lctrl + alt - left : yabai -m window --resize left:-50:0; \
-                     yabai -m window --resize right:-50:0
-lctrl + alt - down : yabai -m window --resize bottom:0:50; \
-                     yabai -m window --resize top:0:50
-lctrl + alt - up : yabai -m window --resize top:0:-50; \
-                   yabai -m window --resize bottom:0:-50
-lctrl + alt - right : yabai -m window --resize right:50:0; \
-                      yabai -m window --resize left:50:0
-
-lctrl + alt - h : yabai -m window --resize left:-50:0; \
-                  yabai -m window --resize right:-50:0
-lctrl + alt - j : yabai -m window --resize bottom:0:50; \
-                  yabai -m window --resize top:0:50
-lctrl + alt - k : yabai -m window --resize top:0:-50; \
-                  yabai -m window --resize bottom:0:-50
-lctrl + alt - l : yabai -m window --resize right:50:0; \
-                  yabai -m window --resize left:50:0
-
-# Equalize size of windows
-lctrl + alt - e : yabai -m space --balance
-
-# Rotate windows clockwise and anticlockwise
-alt - r         : yabai -m space --rotate 270
-shift + alt - r : yabai -m space --rotate 90
-
-# Rotate on X and Y Axis
-shift + alt - x : yabai -m space --mirror x-axis
-shift + alt - y : yabai -m space --mirror y-axis
-
-# Set insertion point for focused container
-shift + lctrl + alt - h : yabai -m window --insert west
-shift + lctrl + alt - j : yabai -m window --insert south
-shift + lctrl + alt - k : yabai -m window --insert north
-shift + lctrl + alt - l : yabai -m window --insert east
-
-# Create space
-cmd + ctrl - n : yabai -m space --create && \
-                        index="$(yabai -m query --spaces --display | jq 'map(select(."is-native-fullscreen" == false))[-1].index')" && \
-                        yabai -m space --focus "${index}"
-
-# Delete space and focus current one
-cmd + ctrl - w : index="$(yabai -m query --spaces --space | jq .index)" && \
-                        yabai -m space --focus prev && \
-                        yabai -m space --destroy "${index}" 
-
-# Change space focus
-cmd + alt - p : yabai -m space --focus prev && yabai -m window --focus "$(yabai -m query --windows --space | jq .[0].id)"
-cmd + alt - n : yabai -m space --focus next && yabai -m window --focus "$(yabai -m query --windows --space | jq .[0].id)"
-
-# Move window to another space and follow focus
-cmd + shift - p : yabai -m window --space prev; yabai -m space --focus prev
-cmd + shift - n : yabai -m window --space next; yabai -m space --focus next
+# Toggle layouts
+ctrl - w : yabai -m space --layout stack
+ctrl - e : yabai -m space --layout bsp
 
 # Toggle window float and border
-shift + alt - space : \
-    yabai -m window --toggle float; \
-    yabai -m window --toggle border
+ctrl + shift - space : yabai -m window --toggle float; yabai -m window --toggle border
+
+# Focus stack children (independently of layout)
+ctrl - a : yabai -m window --focus stack.next
+# Focus stack parent (independently of layout)
+ctrl - d : yabai -m window --focus stack.prev
+
+# Change space focus
+ctrl + shift - left : yabai -m space --focus prev; yabai -m window --focus "$(yabai -m query --windows --space | jq .[0].id)"
+ctrl + shift - right  : yabai -m space --focus next; yabai -m window --focus "$(yabai -m query --windows --space | jq .[0].id)"
+
+# Create space
+cmd + ctrl - n : yabai -m space --create; index="$(yabai -m query --spaces --display | jq 'map(select(."is-native-fullscreen" == false))[-1].index')"; yabai -m space --focus "${index}"
+
+# Kill space
+cmd + ctrl - k : index="$(yabai -m query --spaces --space | jq .index)"; yabai -m space --focus prev && yabai -m space --destroy "${index}" 
+
+# Move window to another space and follow focus
+ctrl + shift - p : yabai -m window --space prev; yabai -m space --focus prev
+ctrl + shift - n : yabai -m window --space next; yabai -m space --focus next
+
+# Resize windows
+ctrl + alt - h : yabai -m window --resize left:-10:0; \
+                 yabai -m window --resize right:-10:0
+ctrl + alt - j : yabai -m window --resize bottom:0:10; \
+                 yabai -m window --resize top:0:10
+ctrl + alt - k : yabai -m window --resize top:0:-10; \
+                 yabai -m window --resize bottom:0:-10
+ctrl + alt - l : yabai -m window --resize right:10:0; \
+                 yabai -m window --resize left:10:0
+
+
