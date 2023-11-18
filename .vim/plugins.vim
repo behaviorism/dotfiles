@@ -12,4 +12,4 @@ Plug 'drsooch/gruber-darker-vim'
 
 call plug#end()
 
-let g:coc_global_extensions = ['coc-tsserver', 'coc-explorer', 'coc-emmet', 'coc-json', 'coc-html', 'coc-css']
+let g:coc_global_extensions = ['coc-tsserver', 'coc-explorer', 'coc-emmet', 'coc-json', 'coc-html', 'coc-css', 'coc-prettier']

@@ -5,16 +5,16 @@ ctrl - return : open -na /Applications/Alacritty.app
 
 # Change window focus
 # If stacked layout, allow h and l to navigate
-ctrl - h : $(yabai -m query --spaces --space | jq '.type == "bsp"') && yabai -m window --focus west || yabai -m window --focus stack.prev
+ctrl - h : if [ "$(yabai -m query --spaces --space | jq -r '.type')" = "bsp" ]; then yabai -m window --focus west; else yabai -m window --focus stack.prev; fi
 ctrl - j : yabai -m window --focus south
 ctrl - k : yabai -m window --focus north
-ctrl - l : $(yabai -m query --spaces --space | jq '.type == "bsp"') && yabai -m window --focus east || yabai -m window --focus stack.next
+ctrl - l : if [ "$(yabai -m query --spaces --space | jq -r '.type')" = "bsp" ]; then yabai -m window --focus east; else yabai -m window --focus stack.next; fi
 
 # Move focused window
-ctrl + shift - h : yabai -m window --warp west
+ctrl + shift - h : if [ "$(yabai -m query --spaces --space | jq -r '.type')" = "bsp" ]; then yabai -m window --warp west; else yabai -m window --swap stack.prev && yabai -m window --focus stack.prev; fi
 ctrl + shift - j : yabai -m window --warp south
 ctrl + shift - k : yabai -m window --warp north
-ctrl + shift - l : yabai -m window --warp east
+ctrl + shift - l : if [ "$(yabai -m query --spaces --space | jq -r '.type')" = "bsp" ]; then yabai -m window --warp east; else yabai -m window --swap stack.next && yabai -m window --focus stack.next; fi
 
 # Toggle fullscreen
 ctrl - f : yabai -m window --toggle zoom-fullscreen
@@ -28,12 +28,11 @@ ctrl + shift - space : yabai -m window --toggle float; yabai -m window --toggle 
 
 # Focus stack children (independently of layout)
 ctrl - a : yabai -m window --focus stack.next
-# Focus stack parent (independently of layout)
 ctrl - d : yabai -m window --focus stack.prev
 
 # Change space focus
-ctrl + shift - left : yabai -m space --focus prev; yabai -m window --focus "$(yabai -m query --windows --space | jq .[0].id)"
-ctrl + shift - right  : yabai -m space --focus next; yabai -m window --focus "$(yabai -m query --windows --space | jq .[0].id)"
+ctrl + shift - left : yabai -m space --focus prev && yabai -m window --focus "$(yabai -m query --windows --space | jq .[0].id)"
+ctrl + shift - right  : yabai -m space --focus next && yabai -m window --focus "$(yabai -m query --windows --space | jq .[0].id)"
 
 # Create space
 cmd + ctrl - n : yabai -m space --create; index="$(yabai -m query --spaces --display | jq 'map(select(."is-native-fullscreen" == false))[-1].index')"; yabai -m space --focus "${index}"
@@ -42,8 +41,8 @@ cmd + ctrl - n : yabai -m space --create; index="$(yabai -m query --spaces --dis
 cmd + ctrl - k : index="$(yabai -m query --spaces --space | jq .index)"; yabai -m space --focus prev && yabai -m space --destroy "${index}" 
 
 # Move window to another space and follow focus
-ctrl + shift - p : yabai -m window --space prev; yabai -m space --focus prev
-ctrl + shift - n : yabai -m window --space next; yabai -m space --focus next
+ctrl + shift - p : yabai -m window --space prev && yabai -m space --focus prev
+ctrl + shift - n : yabai -m window --space next && yabai -m space --focus next
 
 # Resize windows
 ctrl + alt - h : yabai -m window --resize left:-10:0; \
