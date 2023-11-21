@@ -5,7 +5,7 @@ alias yc='yabai -m config'
 
 # Default layout
 yabai -m config layout stack
-yabai -m window_placement second_child
+yabai -m config window_placement second_child
 
 # Windows transparency
 yabai -m config window_opacity off
