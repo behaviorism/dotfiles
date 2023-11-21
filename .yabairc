@@ -13,17 +13,14 @@ yabai -m config active_window_opacity 1.0
 yabai -m config normal_window_opacity 1.0
 
 # Borders
-yabai -m config window_border on
-yabai -m config window_border_width 1
-yabai -m config active_window_border_color 0xff4c7899
-yabai -m config normal_window_border_color 0xff333333
-yabai -m config window_border_radius 0
+# yabai -m config window_border on
+# yabai -m config window_border_width 1
+# yabai -m config active_window_border_color 0xff4c7899
+# yabai -m config normal_window_border_color 0xff333333
+# yabai -m config window_border_radius 0
 
 # Remove windows drop shadow
 yabai -m config window_shadow off
 
-# Preset first space
-yabai -m config space 1 --layout bsp
-
-# Tabs bar padding
-yabai -m config top_padding 19
+# Preset first space layout
+yabai -m space 1 --layout bsp
