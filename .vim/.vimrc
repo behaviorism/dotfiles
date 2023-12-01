@@ -26,10 +26,13 @@ set clipboard^=unnamed
 
 set noesckeys
 
+set expandtab
 set list
-set listchars=tab:·\ ,
-
+set listchars=space:·
 colorscheme GruberDarker
+
+hi WhiteSpace ctermfg=235 guifg=#282828
+match WhiteSpace /\s/
 
 hi LineNr ctermfg=darkgrey guifg=#52494e
 

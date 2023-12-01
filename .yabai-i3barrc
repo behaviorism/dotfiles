@@ -1,0 +1,18 @@
+{
+  "tabs-bar-padding": 17,
+  "status-bar-padding": 23,
+  "tray": {
+    "disk": {
+      "enabled": true,
+      "path": "/"
+    },
+    "cpu_usage": {
+      "enabled": true,
+      "max_threshold": 75
+    },
+    "battery": {
+      "enabled": true,
+      "min_threshold": 10
+    }
+  }
+}
