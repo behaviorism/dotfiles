@@ -1,6 +1,6 @@
 cd ~/dotfiles
 
-rm -rf !(scripts)
+rm -rf ^(scripts)
 
 copy_folder() {
 	mkdir -p `dirname ~/dotfiles/"$1"`
