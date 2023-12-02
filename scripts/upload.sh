@@ -7,7 +7,7 @@ copy_folder() {
 	cp -r ~/${~1} `dirname ~/dotfiles/"$1"`
 }
 
-paths=('.skhdrc' '.tmux.conf' '.yabairc' '.zshrc' '.config/alacritty' '.vim/*.*' '.vim/.vimrc' 'typescript' '.yabai-i3barrc')
+paths=('.skhdrc' '.tmux.conf' '.yabairc' '.zshrc' '.config/alacritty' '.vim/*.*' '.vim/.vimrc' '.yabai-i3barrc')
 
 for p in $paths; do
 	copy_folder $p
