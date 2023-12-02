@@ -1,5 +1,4 @@
 source ~/.vim/plugins.vim
-source ~/.vim/nerdtree.vim
 source ~/.vim/coc.vim
 source ~/.vim/emmet.vim
 source ~/.vim/mappings.vim
