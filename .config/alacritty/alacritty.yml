@@ -17,4 +17,4 @@ font:
 
 live_config_reload: true
 import:
-  - ~/.config/alacritty/theme.yml
+  - ~/.config/alacritty/gruber_darker.yml
