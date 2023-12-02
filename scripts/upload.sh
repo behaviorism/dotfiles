@@ -1,6 +1,6 @@
 cd ~/dotfiles
 
-find . -not \( -path "./.git" -prune \) -not \( -path "./scripts" -prune \) -exec rm -rf {} \;
+find . -not ".gitignore" -not \( -path "./.git" -prune \) -not \( -path "./scripts" -prune \) -exec rm -rf {} \;
 
 copy_folder() {
 	mkdir -p `dirname ~/dotfiles/"$1"`
