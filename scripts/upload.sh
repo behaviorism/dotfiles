@@ -1,6 +1,6 @@
 cd ~/dotfiles
 
-find . -mindepth 1 ! -name ".gitignore" ! \( -path "./.git" -prune \) ! \( -path "./scripts" -prune \) -exec rm -rf {} \;
+find . -mindepth 1 ! -name ".gitignore" ! \( -path "./.git" -prune \) ! \( -path "./scripts" -prune \) -exec rm -rf ~/dotfiles/{} \;
 
 copy_folder() {
 	mkdir -p `dirname ~/dotfiles/"$1"`
