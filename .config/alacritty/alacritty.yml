@@ -8,6 +8,8 @@ window:
 
 window.opacity: 0.95
 
+dynamic_title: true
+
 font:
   normal:
     family: Iosevka

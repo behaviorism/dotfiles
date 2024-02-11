@@ -3,10 +3,6 @@ colors:
     foreground: "0xe4e4ef"
     background: "0x181818"
 
-  #cursor:
-  #text: "0x191622"
-  #cursor: "0xffdd33"
-
   normal:
     black: "0x2E3436"
     red: "0xa40000"
