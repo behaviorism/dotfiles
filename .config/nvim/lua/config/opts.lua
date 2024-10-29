@@ -1,17 +1,13 @@
 local g = vim.g
 local o = vim.opt
 
-vim.cmd([[
-  let g:netrw_liststyle = 1
-  let g:netrw_banner = 0
-]])
-
 g.mapleader = " "
 g.maplocalleader = "\\"
 
 -- Move between buffers without saving
 o.hidden = true
 
+-- Hide menu
 o.wildoptions = "fuzzy"
 
 o.backup = false
@@ -34,11 +30,13 @@ o.guicursor = ""
 o.wrap = false
 o.scrolloff = 4
 
-o.signcolumn = "yes"
+o.signcolumn = "yes:1"
 o.cursorline = true
 -- Sets the current line number on the same column
 -- as the other numbers
-o.statuscolumn = "%s%r"
+-- arch neovim
+-- o.statuscolumn = "%s%r"
+o.numberwidth = 1
 
 -- Make cursor blink
 o.guicursor = "a:block-blinkon500"

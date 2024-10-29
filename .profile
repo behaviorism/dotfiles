@@ -1,5 +1,5 @@
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
 . "$HOME/.cargo/env"
 
-if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
-  exec startx
-fi
